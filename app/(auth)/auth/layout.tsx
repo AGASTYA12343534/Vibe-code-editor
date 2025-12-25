@@ -1,3 +1,5 @@
+// Handles AI suggestion requests using local LLM
+
 import React from "react";
 
 
