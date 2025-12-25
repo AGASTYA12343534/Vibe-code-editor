@@ -1,133 +1,122 @@
+⚡ Vibecode — Browser-Native AI Development Studio
 
+Vibecode is a browser-first AI-powered development environment that allows developers to write, run, and experiment with code entirely inside the browser.
+It removes the need for heavy local setup by combining an in-browser code editor, live execution, and offline AI assistance into one seamless workspace.
 
-# ⚡ Vibecode – Browser-Native AI Development Studio
+The goal of Vibecode is to make learning, prototyping, and rapid development simple, fast, and accessible.
 
-Vibecode is a **fully in-browser development environment** that combines a modern code editor, live runtime execution, and local AI assistance into a single seamless experience. It is designed for developers who want to prototype, experiment, and learn **without installing heavy toolchains**.
+🚀 Why Vibecode?
 
-The platform runs entirely in the browser using WebContainers and enhances productivity with **offline AI models**, real-time terminals, and a clean, developer-centric interface.
+Unlike traditional online IDEs or cloud-based editors, Vibecode focuses on:
 
----
+Local-first AI using on-device models
 
-## 🌟 What Makes Vibecode Different?
+Instant execution environments via WebContainers
 
-Unlike traditional online IDEs, Vibecode focuses on:
+Full-stack workflows, not just frontend demos
 
-* **Local-first AI** (no cloud dependency for suggestions)
-* **Instant runtime environments** inside the browser
-* **Full-stack templates**, not just frontend sandboxes
-* **Human-friendly workflows**, not tutorial clones
+Clean and understandable architecture for learners
 
----
+🧩 Key Features
+🔐 Authentication
 
-## ✨ Core Capabilities
+OAuth-based authentication
 
-### 🔐 Authentication
+Supports Google and GitHub
 
-* Secure OAuth-based login
-* Supports Google and GitHub providers
-* Session handling with modern auth flows
+Secure session handling
 
-### 🧑‍💻 Coding Experience
+🧑‍💻 In-Browser Coding
 
-* Advanced in-browser editor powered by Monaco
-* Language-aware syntax highlighting and formatting
-* Custom keybindings and productivity shortcuts
+Monaco Editor with VS Code–like experience
 
-### 📁 Workspace Management
+Syntax highlighting and formatting
 
-* Interactive file & folder explorer
-* Create, rename, move, and delete files instantly
-* Project-level organization similar to VS Code
+Keyboard-friendly workflows
 
-### ⚡ Live Execution
+📁 Workspace Management
 
-* Run frontend and backend apps directly in the browser
-* No local Node.js or framework installation required
-* Powered by WebContainers
+Create, edit, rename, and delete files
 
-### 🖥️ Integrated Terminal
+Folder-based project organization
 
-* Fully functional terminal using xterm.js
-* Supports common shell commands
-* Tight integration with the runtime environment
+Familiar IDE-style layout
 
-### 🤖 AI Assistance (Offline)
+⚡ Live Runtime Execution
 
-* AI-powered code suggestions using local LLMs
-* Trigger completions manually or contextually
-* Accept suggestions instantly without network latency
+Run frontend and backend projects in-browser
 
-### 💬 AI Chat Support
+No local Node.js installation required
 
-* Chat with the AI about your codebase
-* Share files or snippets for explanations and refactors
-* Useful for debugging and learning
+Powered by WebContainers
 
-### 🎨 Interface & Accessibility
+🖥️ Integrated Terminal
 
-* Clean, minimal UI built for long coding sessions
-* Dark and light themes supported
-* Responsive layout for different screen sizes
+Fully embedded terminal using xterm.js
 
----
+Execute commands inside the browser runtime
 
-## 🧩 Available Project Starters
+Tight integration with the workspace
 
-Create a workspace using preconfigured templates:
+🤖 Offline AI Assistance
 
-* React
-* Next.js
-* Express
-* Hono
-* Vue
-* Angular
+Local AI models via Ollama
 
-Each template comes with a ready-to-run setup.
+Context-aware code suggestions
 
----
+Faster responses without network dependency
 
-## 🧰 Technology Overview
+💬 AI Chat
 
-| Area           | Tooling Used         |
-| -------------- | -------------------- |
-| Framework      | Next.js (App Router) |
-| Language       | TypeScript           |
-| UI Styling     | Tailwind CSS, ShadCN |
-| Authentication | NextAuth             |
-| Code Editor    | Monaco Editor        |
-| AI Engine      | Ollama (local LLMs)  |
-| Runtime        | WebContainers        |
-| Terminal       | xterm.js             |
-| Database       | MongoDB              |
+Ask questions about your codebase
 
----
+Request explanations or refactors
 
-## 🛠️ Local Setup Guide
+Helpful for debugging and learning
 
-### Step 1: Clone the Repository
+🧰 Project Templates
 
-```bash
+Vibecode provides ready-to-use starters:
+
+React
+
+Next.js
+
+Express
+
+Hono
+
+Vue
+
+Angular
+
+Each template is preconfigured and runnable instantly.
+
+🛠️ Tech Stack
+Area	Technology
+Framework	Next.js (App Router)
+Language	TypeScript
+Styling	Tailwind CSS, ShadCN UI
+Auth	NextAuth
+Editor	Monaco Editor
+AI	Ollama (local LLMs)
+Runtime	WebContainers
+Terminal	xterm.js
+Database	MongoDB
+🖥️ Local Development Setup
+1️⃣ Clone the repository
 git clone https://github.com/your-username/vibecode-editor.git
 cd vibecode-editor
-```
 
-### Step 2: Install Dependencies
-
-```bash
+2️⃣ Install dependencies
 npm install
-```
 
-### Step 3: Configure Environment Variables
-
-Create a local environment file:
-
-```bash
+3️⃣ Configure environment variables
 cp .env.example .env.local
-```
 
-Update it with your credentials:
 
-```env
+Fill in the required credentials:
+
 AUTH_SECRET=your_auth_secret
 AUTH_GOOGLE_ID=your_google_client_id
 AUTH_GOOGLE_SECRET=your_google_secret
@@ -135,74 +124,55 @@ AUTH_GITHUB_ID=your_github_client_id
 AUTH_GITHUB_SECRET=your_github_secret
 DATABASE_URL=your_mongodb_url
 NEXTAUTH_URL=http://localhost:3000
-```
 
-### Step 4: Start the AI Model
+4️⃣ Start the AI model
 
-Ensure **Ollama** and **Docker** are installed, then run:
+Make sure Ollama is installed:
 
-```bash
 ollama run codellama
-```
 
-You may use any compatible code-focused model.
-
-### Step 5: Launch the Development Server
-
-```bash
+5️⃣ Run the development server
 npm run dev
-```
 
-Open your browser and navigate to:
 
-```
+Visit:
+
 http://localhost:3000
-```
 
----
+🧠 Design Principles
 
-## ⌨️ Productivity Shortcuts
+Browser-first development
 
-| Action                | Shortcut                        |
-| --------------------- | ------------------------------- |
-| Trigger AI suggestion | `Ctrl + Space` / `Double Enter` |
-| Accept suggestion     | `Tab`                           |
-| Command palette       | `/` (if enabled)                |
+Offline-friendly AI
 
----
+Readable and maintainable code
 
-## 🧠 Design Philosophy
+Focused on learning and experimentation
 
-* **Browser-first**: Everything should work without local setup
-* **Offline-friendly AI**: Privacy and speed over cloud dependency
-* **Readable architecture**: Easy to understand, extend, and maintain
-* **Learning-focused**: Built to help developers grow, not just code
+🔮 Future Improvements
 
----
+Collaborative editing
 
-## 🔮 Planned Enhancements
+Workspace persistence
 
-* Collaborative editing
-* Workspace persistence
-* AI-powered test generation
-* GitHub repo sync
-* Plugin system for extensions
+AI-based test generation
 
----
+GitHub repository sync
 
-## 📜 License
+Plugin system
 
-Distributed under the **MIT License**.
-See the `LICENSE` file for details.
+📜 License
 
----
+This project is licensed under the MIT License.
 
-## 🙌 Credits & Inspiration
+🙌 Acknowledgements
 
-* Monaco Editor
-* WebContainers
-* Ollama
-* xterm.js
-* NextAuth
+Monaco Editor
 
----
+WebContainers
+
+Ollama
+
+xterm.js
+
+NextAuth
