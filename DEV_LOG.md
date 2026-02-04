@@ -7,3 +7,4 @@
 - 2026-01-22: Update prisma schema indexes for improved performance
 - 2026-01-26: Clean up unused development dependencies
 - 2026-01-30: Implement debounce for code auto-save hooks
+- 2026-02-04: Fix minor layout bug in AI chat sidebar panel
