@@ -9,3 +9,4 @@
 - 2026-01-30: Implement debounce for code auto-save hooks
 - 2026-02-04: Fix minor layout bug in AI chat sidebar panel
 - 2026-02-09: Enhance code snippet syntax highlighting rules
+- 2026-02-14: Add skeleton loading states to template selection
