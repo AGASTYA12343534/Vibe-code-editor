@@ -12,3 +12,4 @@
 - 2026-02-14: Add skeleton loading states to template selection
 - 2026-02-19: Refactor custom React hooks for better modularity
 - 2026-02-23: Update tailwind utility classes for dark mode
+- 2026-02-27: Fix unmounted state memory leak in webcontainer
