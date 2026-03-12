@@ -15,3 +15,4 @@
 - 2026-02-27: Fix unmounted state memory leak in webcontainer
 - 2026-03-03: Standardize button component variant styles
 - 2026-03-08: Improve AI prompt context injection logic
+- 2026-03-12: Add loading spinners to async dashboard buttons
