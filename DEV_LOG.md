@@ -16,3 +16,4 @@
 - 2026-03-03: Standardize button component variant styles
 - 2026-03-08: Improve AI prompt context injection logic
 - 2026-03-12: Add loading spinners to async dashboard buttons
+- 2026-03-17: Consolidate duplicated types in dashboard actions
