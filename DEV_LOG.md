@@ -18,3 +18,4 @@
 - 2026-03-12: Add loading spinners to async dashboard buttons
 - 2026-03-17: Consolidate duplicated types in dashboard actions
 - 2026-03-21: Refine dropdown menu animations
+- 2026-03-26: Enhance modal trap focus accessibility
