@@ -20,3 +20,4 @@
 - 2026-03-21: Refine dropdown menu animations
 - 2026-03-26: Enhance modal trap focus accessibility
 - 2026-03-31: Update middleware routing structure
+- 2026-04-03: Optimize static image loading with Next Image
