@@ -21,3 +21,4 @@
 - 2026-03-26: Enhance modal trap focus accessibility
 - 2026-03-31: Update middleware routing structure
 - 2026-04-03: Optimize static image loading with Next Image
+- 2026-04-07: Improve error toast messages in editor
