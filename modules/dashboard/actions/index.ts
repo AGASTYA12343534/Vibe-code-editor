@@ -129,7 +129,9 @@ export const duplicateProjectById = async (id: string) => {
   try {
     const originalPlayground = await db.playground.findUnique({
       where: { id },
-      // todo: add tempalte files
+      include: {
+        templateFiles: true,
+      },
     });
     if (!originalPlayground) {
       throw new Error("Original playground not found");
@@ -141,10 +143,21 @@ export const duplicateProjectById = async (id: string) => {
         description: originalPlayground.description,
         template: originalPlayground.template,
         userId: originalPlayground.userId,
-
-        // todo: add template files
       },
     });
+
+    // Copy template files if they exist
+    if (originalPlayground.templateFiles && originalPlayground.templateFiles.length > 0) {
+      for (const templateFile of originalPlayground.templateFiles) {
+        await db.templateFile.create({
+          data: {
+            playgroundId: duplicatedPlayground.id,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            content: templateFile.content as any,
+          },
+        });
+      }
+    }
 
     revalidatePath("/dashboard");
     return duplicatedPlayground;

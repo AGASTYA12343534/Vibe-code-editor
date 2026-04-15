@@ -22,6 +22,8 @@ interface CodeContext {
   incompletePatterns: string[];
 }
 
+const OLLAMA_URL = process.env.OLLAMA_URL || "http://localhost:11434";
+
 export async function POST(request: NextRequest) {
   try {
     const body: CodeSuggestionRequest = await request.json();
@@ -58,10 +60,11 @@ export async function POST(request: NextRequest) {
         generatedAt: new Date().toISOString(),
       },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Context analysis error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
-      { error: "Internal server error", message: error.message },
+      { error: "Internal server error", message: errorMessage },
       { status: 500 }
     );
   }
@@ -139,11 +142,11 @@ Generate suggestion:`;
 
 async function generateSuggestion(prompt: string): Promise<string> {
   try {
-    const response = await fetch("http://localhost:11434/api/generate", {
+    const response = await fetch(`${OLLAMA_URL}/api/generate`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "codellama:latest",
+        model: process.env.OLLAMA_MODEL || "codellama:latest",
         prompt,
         stream: false,
         option: {

@@ -1,13 +1,18 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
+import dynamic from "next/dynamic";
 
 import { transformToWebContainerFormat } from "../hooks/transformer";
 import { CheckCircle, Loader2, XCircle } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 
-import { WebContainer } from "@webcontainer/api";
+import type { WebContainer } from "@webcontainer/api";
 import { TemplateFolder } from "@/modules/playground/lib/path-to-json";
-import TerminalComponent from "./terminal";
+
+const TerminalComponent = dynamic(
+  () => import("./terminal"),
+  { ssr: false }
+);
 
 interface WebContainerPreviewProps {
   templateData: TemplateFolder;

@@ -1,0 +1,7 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #213547;
+}

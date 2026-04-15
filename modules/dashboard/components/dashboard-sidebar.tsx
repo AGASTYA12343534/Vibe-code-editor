@@ -36,6 +36,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import Image from "next/image"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 
 // Define the interface for a single playground item, icon is now a string
 interface PlaygroundData {
@@ -160,7 +161,7 @@ export function DashboardSidebar({ initialPlaygroundData }: { initialPlaygroundD
               )}
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="View all">
-                  <Link href="/playgrounds">
+                  <Link href="/dashboard">
                     <span className="text-sm text-muted-foreground">View all playgrounds</span>
                   </Link>
                 </SidebarMenuButton>
@@ -171,6 +172,12 @@ export function DashboardSidebar({ initialPlaygroundData }: { initialPlaygroundD
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton tooltip="Toggle theme">
+              <ThemeToggle />
+              <span>Toggle Theme</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton asChild tooltip="Settings">
               <Link href="/settings">

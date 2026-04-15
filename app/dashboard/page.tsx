@@ -20,10 +20,18 @@ const Page = async () => {
           <EmptyState />
         ) : (
           <ProjectTable
-            projects={playgrounds || []}
-            onDeleteProject={deleteProjectById}
-            onUpdateProject={editProjectById}
-            onDuplicateProject={duplicateProjectById}
+            projects={playgrounds?.map(p => ({
+              ...p,
+              description: p.description || "",
+              user: {
+                ...p.user,
+                name: p.user.name || "",
+                image: p.user.image || ""
+              }
+            })) || []}
+            onDeleteProject={async (id) => { await deleteProjectById(id); }}
+            onUpdateProject={async (id, data) => { await editProjectById(id, data); }}
+            onDuplicateProject={async (id) => { await duplicateProjectById(id); }}
           />
         )}
       </div>

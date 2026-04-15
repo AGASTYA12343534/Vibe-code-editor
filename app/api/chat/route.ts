@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { error } from "console";
+import { auth } from "@/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 interface ChatMessage {
@@ -11,6 +11,8 @@ interface ChatRequest {
   message: string;
   history: ChatMessage[];
 }
+
+const OLLAMA_URL = process.env.OLLAMA_URL || "http://localhost:11434";
 
 async function generateAIResponse(messages: ChatMessage[]): Promise<string> {
   const systemPrompt = `You are a helpful AI coding assistant. You help developers with:
@@ -29,13 +31,13 @@ Always provide clear, practical answers. Use proper code formatting when showing
     .join("\n\n");
 
   try {
-    const response = await fetch("http://localhost:11434/api/generate", {
+    const response = await fetch(`${OLLAMA_URL}/api/generate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "codellama:latest",
+        model: process.env.OLLAMA_MODEL || "codellama:latest",
         prompt: prompt,
         stream: false,
         options: {
@@ -55,12 +57,15 @@ Always provide clear, practical answers. Use proper code formatting when showing
     return data.response.trim();
   } catch (error) {
     console.error("AI generation error:", error);
-    throw new Error("Failed to generate AI response");
+    throw new Error("Failed to generate AI response. Make sure Ollama is running.");
   }
 }
 
 export async function POST(req: NextRequest) {
   try {
+    const session = await auth();
+    const userId = session?.user?.id;
+
     const body: ChatRequest = await req.json();
     const { message, history = [] } = body;
 
@@ -91,11 +96,38 @@ export async function POST(req: NextRequest) {
       { role: "user", content: message },
     ];
 
-    //   Generate ai response
+    // Save user message to database if authenticated
+    if (userId) {
+      try {
+        await db.chatMessage.create({
+          data: {
+            userId,
+            role: "user",
+            content: message,
+          },
+        });
+      } catch (dbError) {
+        console.error("Failed to save user message to DB:", dbError);
+      }
+    }
 
+    // Generate AI response
     const aiResponse = await generateAIResponse(messages);
 
-
+    // Save assistant response to database if authenticated
+    if (userId) {
+      try {
+        await db.chatMessage.create({
+          data: {
+            userId,
+            role: "assistant",
+            content: aiResponse,
+          },
+        });
+      } catch (dbError) {
+        console.error("Failed to save assistant message to DB:", dbError);
+      }
+    }
 
     return NextResponse.json({
       response: aiResponse,

@@ -7,4 +7,5 @@ build
 .next
 __MACOSX
 .DS_Store
+output/
 
