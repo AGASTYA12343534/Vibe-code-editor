@@ -1,0 +1,20 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="48" fill="#0A0A0A"/>
+  <!-- Vertical stem -->
+  <rect x="84" y="64" width="32" height="128" rx="4" fill="url(#grad1)"/>
+  <!-- Top horizontal -->
+  <rect x="84" y="64" width="88" height="32" rx="4" fill="url(#grad1)"/>
+  <!-- Middle horizontal -->
+  <rect x="84" y="112" width="64" height="32" rx="4" fill="url(#grad1)"/>
+  <!-- Subtle glowing dot representing intelligence/spark -->
+  <circle cx="156" cy="128" r="8" fill="#E93F3F" filter="url(#glow)"/>
+  <defs>
+    <linearGradient id="grad1" x1="84" y1="64" x2="172" y2="192" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E93F3F" />
+      <stop offset="1" stop-color="#B91C1C" />
+    </linearGradient>
+    <filter id="glow" x="140" y="112" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur"/>
+    </filter>
+  </defs>
+</svg>
