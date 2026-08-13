@@ -268,7 +268,6 @@ const MainPlaygroundPage = () => {
       writeFileSync,
       instance,
       saveTemplateData,
-      setTemplateData,
       setOpenFiles,
     ]
   );
@@ -284,7 +283,7 @@ const MainPlaygroundPage = () => {
     try {
       await Promise.all(unsavedFiles.map((f) => handleSave(f.id)));
       toast.success(`Saved ${unsavedFiles.length} file(s)`);
-    } catch (error) {
+    } catch {
       toast.error("Failed to save some files");
     }
   };
